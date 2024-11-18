@@ -1,52 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://8m6fw1nunuqf"]
+[gd_scene load_steps=4 format=3 uid="uid://8m6fw1nunuqf"]
 
-[ext_resource type="Texture2D" uid="uid://cw42mwtks3fkt" path="res://assets/roadSegments/withTreesLeft.png" id="1_iae0v"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_pov0f"]
-[ext_resource type="Script" path="res://scripts/road_with_trees_left.gd" id="3_6ummo"]
-[ext_resource type="Script" path="res://scripts/road_with_trees_right.gd" id="4_22wmy"]
-[ext_resource type="Texture2D" uid="uid://cva1dirfk2ejy" path="res://assets/roadSegments/withTreesRight.png" id="4_tclbb"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_20chs"]
-size = Vector2(67.2491, 9.59742)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_braca"]
-size = Vector2(71.5978, 7.59029)
+[ext_resource type="PackedScene" uid="uid://0h6ninldevvm" path="res://scenes/road_with_trees_left.tscn" id="2_t7plr"]
+[ext_resource type="PackedScene" uid="uid://cwlvrfgy5tp73" path="res://scenes/road_with_trees_right.tscn" id="3_f5n7f"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_pov0f")
 
 [node name="RoadSegments" type="Node" parent="."]
 
-[node name="RoadWithTreesLeft" type="Area2D" parent="RoadSegments"]
-position = Vector2(607, -109)
-script = ExtResource("3_6ummo")
+[node name="RoadWithTreesLeft" parent="RoadSegments" instance=ExtResource("2_t7plr")]
+position = Vector2(706, -74)
 
-[node name="Sprite2D" type="Sprite2D" parent="RoadSegments/RoadWithTreesLeft"]
-texture = ExtResource("1_iae0v")
-
-[node name="PavementCollisionShapeR" type="CollisionShape2D" parent="RoadSegments/RoadWithTreesLeft"]
-position = Vector2(21, 7)
-rotation = -0.471239
-shape = SubResource("RectangleShape2D_20chs")
-
-[node name="PavementCollisionShapeLe" type="CollisionShape2D" parent="RoadSegments/RoadWithTreesLeft"]
-position = Vector2(-23, -18)
-rotation = -0.471239
-shape = SubResource("RectangleShape2D_20chs")
-
-[node name="RoadWithTreesRight" type="Area2D" parent="RoadSegments"]
-script = ExtResource("4_22wmy")
-
-[node name="Sprite2D" type="Sprite2D" parent="RoadSegments/RoadWithTreesRight"]
-position = Vector2(21, 7)
-texture = ExtResource("4_tclbb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RoadSegments/RoadWithTreesRight"]
-position = Vector2(1.90793, 13.7326)
-rotation = 0.453786
-shape = SubResource("RectangleShape2D_braca")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="RoadSegments/RoadWithTreesRight"]
-position = Vector2(44, -9)
-rotation = 0.453786
-shape = SubResource("RectangleShape2D_braca")
+[node name="RoadWithTreesRight" parent="RoadSegments" instance=ExtResource("3_f5n7f")]
+position = Vector2(479, 115)
